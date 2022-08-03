@@ -1,0 +1,53 @@
+---
+title: "Matplotlib and ggplot2 demo"
+author: "Keith McNulty"
+abstract: "This paper illustrates some example plots from the `ggplot2` R package and the `matplotlib` Python package.  Both of these packages offer powerful options for visualizing data."
+format:
+  html:
+    code-fold: true
+---
+
+```{r, echo = FALSE}
+library(reticulate)
+reticulate::use_virtualenv("./env")
+```
+
+## A boxplot in R using `ggplot2`
+
+For a demonstration of a boxplot, see @fig-boxplot.
+
+```{r}
+#| label: fig-boxplot
+#| fig-cap: "A boxplot"
+#| out.height: "200"
+
+library(ggplot2)
+
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+    geom_boxplot() +
+    labs(x = "cyl") +
+    theme_minimal()
+```
+
+\newpage
+
+## A line plot on a polar axis in Python using `matplotlib`
+For a demonstration of a line plot on a polar axis, see @fig-polar.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```

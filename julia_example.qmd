@@ -1,0 +1,16 @@
+---
+title: "StatsPlots demo"
+format: html
+jupyter: julia-1.6
+---
+
+For a demonstration of a line plot on a polar axis, see @fig-violin.
+
+```{julia}
+#| label: fig-violin
+#| fig-cap: "A violin plot"
+
+using StatsPlots
+y = rand(100, 4) # Four series of 100 points each
+violin(["Series 1" "Series 2" "Series 3" "Series 4"], y, leg = false)
+```

@@ -1,0 +1,20 @@
+---
+title: "ggplot2 demo"
+format:
+  html:
+    code-fold: true
+---
+
+For a demonstration of a boxplot, see @fig-boxplot.
+
+```{r}
+#| label: fig-boxplot
+#| fig-cap: "A boxplot"
+
+library(ggplot2)
+
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+    geom_boxplot() +
+    labs(x = "cyl") +
+    theme_minimal()
+```
